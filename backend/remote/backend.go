@@ -3,6 +3,7 @@ package remote
 import (
 	"context"
 	"fmt"
+	"github.com/hashicorp/terraform/plans"
 	"log"
 	"net/http"
 	"net/url"
@@ -721,6 +722,10 @@ func (b *Remote) Operation(ctx context.Context, op *backend.Operation) (*backend
 		f = b.opPlan
 	case backend.OperationTypeApply:
 		f = b.opApply
+	case backend.OperationTypeRefresh:
+		op.PlanMode = plans.RefreshOnlyMode
+		op.PlanRefresh = true
+		f = b.opPlan
 	default:
 		return nil, fmt.Errorf(
 			"\n\nThe \"remote\" backend does not support the %q operation.", op.Type)
