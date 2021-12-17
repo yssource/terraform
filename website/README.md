@@ -24,7 +24,7 @@ You should preview all of your changes locally before creating a pull request. T
 **Launch Site Locally**
 
 1. Navigate into your local `terraform` top-level directory and run `make website`.
-1. Open `http://localhost:4567` in your web browser. While the preview is running, you can edit pages and Next.js will automatically rebuild them.
+1. Open `http://localhost:3000` in your web browser. While the preview is running, you can edit pages and Next.js will automatically rebuild them.
 1. When you're done with the preview, press `ctrl-C` in your terminal to stop the server.
 
 ## Deploying Changes
@@ -34,7 +34,7 @@ Merge the PR to main. The changes will appear in the next major Terraform releas
 If you need your changes to be deployed sooner, cherry-pick them to:
 
 - the current release branch (e.g. `v1.1`) and push. They will be deployed in the next minor version release (once every two weeks).
-- the `stable-website` branch and push. They will be included in the next site deploy (see below). Note that the release process resets `stable-website` to match the release tag, removing any additional commits. So, we recommend always cherry-picking to the version branch first and then to `stable-website` when needed.
+- the `stable-website` branch and push. They will be included in the next site deploy (see below). Note that the release process resets `stable-website` to match the release tag, removing any additional commits. So, we recommend always cherry-picking to the version branch first and then to `stable-website` when needed.
 
 Once your PR to `stable-website` is merged, open a PR bumping the submodule commit in [`terraform-website`](https://github.com/hashicorp/terraform-website).
 
